@@ -7,13 +7,14 @@
 #include <stdlib.h>
 
 
-#define SUCCESS 1
-#define FAILURE 0
+#define OK 0
+#define INCORRECT_MATRIX 1
+#define INCORRECT_COUNT 2
 
 typedef struct matrix_struct {
-    double** matrix;
-    int rows;
-    int columns;
+  double **matrix;
+  int rows;
+  int columns;
 } matrix_t;
 
 int s21_create_matrix(int rows, int columns, matrix_t *result);
