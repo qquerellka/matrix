@@ -1,15 +1,14 @@
 #include "s21_matrix.h"
 
-
 int s21_mult_number(matrix_t *A, double number, matrix_t *result) {
   if (A == NULL || A->matrix == NULL) {
     return INCORRECT_MATRIX;
   }
 
-  int code = s21_create_matrix(A->rows, A->columns, result);
-  if (code != OK) {
-    return code;
+  if (A->columns <= 0 || A->rows <= 0) {
+    return INCORRECT_COUNT;
   }
+  s21_create_matrix(A->rows, A->columns, result);
 
   for (int i = 0; i < A->rows; i++) {
     for (int j = 0; j < A->columns; j++) {

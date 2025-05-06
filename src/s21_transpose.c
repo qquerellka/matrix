@@ -5,10 +5,11 @@ int s21_transpose(matrix_t *A, matrix_t *result) {
     return INCORRECT_MATRIX;
   }
 
-  int code = s21_create_matrix(A->columns, A->rows, result);
-  if (code != OK) {
-    return code;
+  if (A->columns <= 0 || A->rows <= 0) {
+    return INCORRECT_COUNT;
   }
+
+  s21_create_matrix(A->columns, A->rows, result);
 
   for (int i = 0; i < A->rows; i++) {
     for (int j = 0; j < A->columns; j++) {

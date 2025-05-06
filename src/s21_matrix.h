@@ -6,7 +6,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 #define OK 0
 #define INCORRECT_MATRIX 1
 #define INCORRECT_COUNT 2

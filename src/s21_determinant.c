@@ -4,7 +4,7 @@ int s21_determinant(matrix_t *A, double *result) {
   if (A == NULL || A->matrix == NULL) {
     return INCORRECT_MATRIX;
   }
-  if (A->columns != A->rows) {
+  if (A->columns != A->rows || A->columns <= 0 || A->rows <= 0) {
     return INCORRECT_COUNT;
   }
 
@@ -19,10 +19,10 @@ int s21_determinant(matrix_t *A, double *result) {
 
       for (int col = 0; col < A->rows; col++) {
         matrix_t minor;
-        int code = s21_create_matrix(A->rows - 1, A->rows - 1, &minor);
-        if (code != OK) {
-          return code;
-        }
+        s21_create_matrix(A->rows - 1, A->rows - 1, &minor);
+        // if (code != OK) {
+        //   return code;
+        // }
 
         // Формируем минор (без строки 0 и столбца col)
         for (int i = 1; i < A->rows; i++) {
@@ -41,8 +41,7 @@ int s21_determinant(matrix_t *A, double *result) {
 
         s21_remove_matrix(&minor);
       }
-        *result = det;
-
+      *result = det;
     }
   }
   return OK;
